@@ -1,3 +1,5 @@
+import { operate } from './mathEngine.js';
+
 const displayElement = document.getElementById('display');
 const numberButtons = document.querySelectorAll('.number-btn');
 const decimalButton = document.getElementById('btn-decimal');
@@ -5,7 +7,11 @@ const clearButton = document.getElementById('btn-clear');
 const backspaceButton = document.getElementById('btn-backspace');
 
 let displayString = '0';
-const MAX_CHARS = 12; 
+const MAX_CHARS = 12;
+
+let firstOperand = null;
+let currentOperator = null;
+let shouldResetDisplay = false;
 
 function updateDisplay(value) {
     displayElement.innerText = value;
@@ -14,6 +20,9 @@ function updateDisplay(value) {
 function clearDisplay() {
     displayString = '0';
     updateDisplay(displayString);
+    firstOperand = null;
+    currentOperator = null;
+    shouldResetDisplay = false;
 }
 
 function handleBackspace() {
@@ -27,8 +36,15 @@ function handleBackspace() {
 
 function appendNumber(num) {
 
+    if (shouldResetDisplay) {
+        displayString = num;
+        shouldResetDisplay = false;
+        updateDisplay(displayString);
+        return;
+    }
+
     if (displayString.length >= MAX_CHARS) {
-        return; 
+        return;
     }
 
     if (displayString === '0') {
@@ -36,18 +52,91 @@ function appendNumber(num) {
     } else {
         displayString += num;
     }
+
     updateDisplay(displayString);
 }
 
 function appendDecimal() {
+
+    if (shouldResetDisplay) {
+        displayString = '0.';
+        shouldResetDisplay = false;
+        updateDisplay(displayString);
+        return;
+    }
+
     if (displayString.length >= MAX_CHARS) {
-        return; 
+        return;
     }
 
     if (!displayString.includes('.')) {
         displayString += '.';
         updateDisplay(displayString);
     }
+}
+
+const operatorButtons = document.querySelectorAll('.operator-btn');
+
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        handleOperator(button.getAttribute('data-operator'));
+    });
+});
+
+function getSymbol(operator) {
+    switch (operator) {
+        case 'add':
+            return '+';
+        case 'subtract':
+            return '-';
+        case 'multiply':
+            return '*';
+        case 'divide':
+            return '/';
+        default:
+            return '';
+    }
+}
+
+function handleOperator(operator) {
+    if (currentOperator !== null && !shouldResetDisplay) {
+        evaluate();
+    }
+
+    firstOperand = displayString;
+    currentOperator = operator;
+    shouldResetDisplay = true;
+
+    updateDisplay(`${firstOperand} ${getSymbol(operator)}`);
+}
+
+const equalsButton = document.getElementById('btn-equals');
+equalsButton.addEventListener('click', evaluate);
+
+function evaluate() {
+    if (currentOperator === null || shouldResetDisplay) return;
+
+    const result = operate(currentOperator, firstOperand, displayString);
+
+    if (typeof result === 'object' && result.error) {
+        updateDisplay(result.message);
+        resetCalculator();
+        return;
+    }
+
+    displayString = String(result).slice(0, MAX_CHARS);
+    updateDisplay(displayString);
+
+    firstOperand = displayString;
+    currentOperator = null;
+    shouldResetDisplay = true;
+}
+
+function resetCalculator() {
+    displayString = '0';
+    firstOperand = null;
+    currentOperator = null;
+    shouldResetDisplay = false;
 }
 
 numberButtons.forEach(button => {
