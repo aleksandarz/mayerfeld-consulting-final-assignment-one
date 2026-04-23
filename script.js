@@ -5,6 +5,7 @@ const clearButton = document.getElementById('btn-clear');
 const backspaceButton = document.getElementById('btn-backspace');
 
 let displayString = '0';
+const MAX_CHARS = 12; 
 
 function updateDisplay(value) {
     displayElement.innerText = value;
@@ -25,6 +26,11 @@ function handleBackspace() {
 }
 
 function appendNumber(num) {
+
+    if (displayString.length >= MAX_CHARS) {
+        return; 
+    }
+
     if (displayString === '0') {
         displayString = num;
     } else {
@@ -34,6 +40,10 @@ function appendNumber(num) {
 }
 
 function appendDecimal() {
+    if (displayString.length >= MAX_CHARS) {
+        return; 
+    }
+
     if (!displayString.includes('.')) {
         displayString += '.';
         updateDisplay(displayString);
@@ -48,4 +58,4 @@ numberButtons.forEach(button => {
 
 decimalButton.addEventListener('click', appendDecimal);
 clearButton.addEventListener('click', clearDisplay);
-backspaceButton.addEventListener('click', handleBackspace);s
+backspaceButton.addEventListener('click', handleBackspace);

@@ -24,9 +24,13 @@ body {
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    overflow: hidden;
-    word-wrap: break-word;
+    
+   
+    height: 40px; 
     min-height: 40px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    word-wrap: break-word; 
 }
 
 .buttons-grid {
@@ -53,22 +57,23 @@ button:active {
     background-color: #aaa;
 }
 
+
 .operator-btn {
-    background-color: #ff9800;
+    background-color: #757575; 
     color: white;
 }
 
 .operator-btn:hover {
-    background-color: #e68a00;
+    background-color: #616161;
 }
 
 .action-btn {
-    background-color: #f44336;
+    background-color: #424242;
     color: white;
 }
 
 .action-btn:hover {
-    background-color: #d32f2f;
+    background-color: #212121;
 }
 
 .span-two {
