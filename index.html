@@ -1,38 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/script.js" defer></script>
 </head>
+
 <body>
-    <div id="calculator">
-        <div id="display">0</div>
-        <div class="buttons-grid">
-            <button id="btn-clear" class="action-btn span-two">Clear</button>
-            <button id="btn-backspace" class="action-btn span-two">Del</button>
-            
-            <button class="number-btn" data-number="7">7</button>
-            <button class="number-btn" data-number="8">8</button>
-            <button class="number-btn" data-number="9">9</button>
-            <button class="operator-btn" data-operator="divide">/</button>
-            
-            <button class="number-btn" data-number="4">4</button>
-            <button class="number-btn" data-number="5">5</button>
-            <button class="number-btn" data-number="6">6</button>
-            <button class="operator-btn" data-operator="multiply">*</button>
-            
-            <button class="number-btn" data-number="1">1</button>
-            <button class="number-btn" data-number="2">2</button>
-            <button class="number-btn" data-number="3">3</button>
-            <button class="operator-btn" data-operator="subtract">-</button>
-            
-            <button class="number-btn" data-number="0">0</button>
-            <button id="btn-decimal">.</button>
-            <button id="btn-equals" class="action-btn">=</button>
-            <button class="operator-btn" data-operator="add">+</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+<main id="calculator" aria-label="Calculator">
+
+    <section id="display" aria-live="polite" role="status">0</section>
+
+    <section class="buttons-grid">
+
+        <button id="btn-clear" class="action-btn span-two">Clear</button>
+        <button id="btn-backspace" class="action-btn span-two">Del</button>
+
+        <button class="number-btn" data-number="7">7</button>
+        <button class="number-btn" data-number="8">8</button>
+        <button class="number-btn" data-number="9">9</button>
+        <button class="operator-btn" data-operator="divide">/</button>
+
+        <button class="number-btn" data-number="4">4</button>
+        <button class="number-btn" data-number="5">5</button>
+        <button class="number-btn" data-number="6">6</button>
+        <button class="operator-btn" data-operator="multiply">*</button>
+
+        <button class="number-btn" data-number="1">1</button>
+        <button class="number-btn" data-number="2">2</button>
+        <button class="number-btn" data-number="3">3</button>
+        <button class="operator-btn" data-operator="subtract">-</button>
+
+        <button class="number-btn" data-number="0">0</button>
+        <button id="btn-decimal">.</button>
+        <button id="btn-equals" class="action-btn">=</button>
+        <button class="operator-btn" data-operator="add">+</button>
+
+    </section>
+</main>
 </body>
 </html>
