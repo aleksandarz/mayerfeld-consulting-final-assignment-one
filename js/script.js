@@ -17,7 +17,14 @@ let shouldResetDisplay = false;
 
 
 function updateDisplay(value) {
-    displayElement.innerText = value;
+    if (isNaN(parseFloat(value)) && value !== '0') {
+        displayElement.innerText = value;
+        return;
+    }
+
+    const numericValue = parseFloat(value.replace(',', '.'));
+    displayElement.innerText = numericValue.toLocaleString('de-DE'),
+        { maximumFractionDigits: 10 };
 }
 
 function updateHistory(content) {
@@ -120,6 +127,7 @@ function handleOperator(operator) {
     updateHistory(`${firstOperand} ${getSymbol(operator)}`);
 }
 
+
 const equalsButton = document.getElementById('btn-equals');
 equalsButton.addEventListener('click', evaluate);
 
@@ -127,7 +135,7 @@ function evaluate() {
     if (currentOperator === null || shouldResetDisplay) return;
 
     const result = operate(currentOperator, firstOperand, displayString);
-
+    console.log(result);
     if (typeof result === 'object' && result.error) {
         updateDisplay(result.message);
         updateHistory('');
@@ -135,7 +143,7 @@ function evaluate() {
         return;
 
     }
-updateHistory(`${firstOperand} ${getSymbol(currentOperator)} ${displayString} =`);
+    updateHistory(`${firstOperand} ${getSymbol(currentOperator)} ${displayString} =`);
 
     displayString = String(result).slice(0, MAX_CHARS);
     updateDisplay(displayString);

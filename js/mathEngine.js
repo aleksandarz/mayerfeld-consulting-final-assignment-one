@@ -8,7 +8,7 @@ export const divide = (a, b) => {
   if (b === 0) {
     return {
       error: true,
-      message: "Nice try. Division by zero? Not today 😄"
+      message: "Nope! No 0s 😄"
     };
   }
   return a / b;
