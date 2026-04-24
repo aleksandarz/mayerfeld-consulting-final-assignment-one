@@ -122,6 +122,7 @@ function evaluate() {
         updateDisplay(result.message);
         resetCalculator();
         return;
+
     }
 
     displayString = String(result).slice(0, MAX_CHARS);
@@ -148,3 +149,37 @@ numberButtons.forEach(button => {
 decimalButton.addEventListener('click', appendDecimal);
 clearButton.addEventListener('click', clearDisplay);
 backspaceButton.addEventListener('click', handleBackspace);
+
+function physicalOperator(key) {
+    switch (key) {
+        case '+':
+            return 'add';
+        case '-':
+            return 'subtract';
+        case '*':
+            return 'multiply';
+        case '/':
+            return 'divide';
+        default:
+            return '';
+    }
+}
+
+
+window.addEventListener('keydown', (event) => {
+    const key = event.key;
+
+    if (key >= '0' && key <= '9') {
+        appendNumber(key);
+    } else if (key === '+' || key === '-' || key === '*' || key === '/') {
+        handleOperator(physicalOperator(key))
+    } else if (key === 'Enter' || key === '=') {
+        evaluate();
+    } else if (key === 'Backspace') {
+        handleBackspace();
+    } else if (key === 'Escape') {
+        clearDisplay();
+    } else if (key === '.') {
+        appendDecimal(); //
+    }
+});
