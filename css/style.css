@@ -82,6 +82,9 @@ button:active {
     background-color: #004466;
 }
 
-.span-two {
-    grid-column: span 2;
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
 }

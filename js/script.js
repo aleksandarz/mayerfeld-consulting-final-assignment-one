@@ -5,6 +5,7 @@ const numberButtons = document.querySelectorAll('.number-btn');
 const decimalButton = document.getElementById('btn-decimal');
 const clearButton = document.getElementById('btn-clear');
 const backspaceButton = document.getElementById('btn-backspace');
+const toggleButton = document.getElementById('toggle-sign');
 
 let displayString = '0';
 const MAX_CHARS = 12;
@@ -83,6 +84,7 @@ operatorButtons.forEach(button => {
     });
 });
 
+
 function getSymbol(operator) {
     switch (operator) {
         case 'add':
@@ -149,6 +151,20 @@ numberButtons.forEach(button => {
 decimalButton.addEventListener('click', appendDecimal);
 clearButton.addEventListener('click', clearDisplay);
 backspaceButton.addEventListener('click', handleBackspace);
+toggleButton.addEventListener('click', () => {
+    negativeToggle();
+});
+
+function negativeToggle() {
+    if (displayString === '0') return;
+    if (displayString.startsWith('-')) {
+        displayString = displayString.slice(1);
+    } else {
+        displayString = '-' + displayString;
+    }
+    updateDisplay(displayString);
+}
+
 
 function physicalOperator(key) {
     switch (key) {
@@ -160,8 +176,8 @@ function physicalOperator(key) {
             return 'multiply';
         case '/':
             return 'divide';
-        default:
-            return '';
+        case 'n':
+            return '+/-';
     }
 }
 
@@ -181,5 +197,8 @@ window.addEventListener('keydown', (event) => {
         clearDisplay();
     } else if (key === '.') {
         appendDecimal(); //
+    }
+    else if (key === 'n') {
+        negativeToggle();
     }
 });
