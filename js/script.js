@@ -6,6 +6,7 @@ const decimalButton = document.getElementById('btn-decimal');
 const clearButton = document.getElementById('btn-clear');
 const backspaceButton = document.getElementById('btn-backspace');
 const toggleButton = document.getElementById('toggle-sign');
+const historyElement = document.getElementById('history');
 
 let displayString = '0';
 const MAX_CHARS = 12;
@@ -14,13 +15,20 @@ let firstOperand = null;
 let currentOperator = null;
 let shouldResetDisplay = false;
 
+
 function updateDisplay(value) {
     displayElement.innerText = value;
 }
 
+function updateHistory(content) {
+    historyElement.innerText = content;
+}
+
+
 function clearDisplay() {
     displayString = '0';
     updateDisplay(displayString);
+    updateHistory('');
     firstOperand = null;
     currentOperator = null;
     shouldResetDisplay = false;
@@ -109,7 +117,7 @@ function handleOperator(operator) {
     currentOperator = operator;
     shouldResetDisplay = true;
 
-    updateDisplay(`${firstOperand} ${getSymbol(operator)}`);
+    updateHistory(`${firstOperand} ${getSymbol(operator)}`);
 }
 
 const equalsButton = document.getElementById('btn-equals');
@@ -122,10 +130,12 @@ function evaluate() {
 
     if (typeof result === 'object' && result.error) {
         updateDisplay(result.message);
+        updateHistory('');
         resetCalculator();
         return;
 
     }
+updateHistory(`${firstOperand} ${getSymbol(currentOperator)} ${displayString} =`);
 
     displayString = String(result).slice(0, MAX_CHARS);
     updateDisplay(displayString);
