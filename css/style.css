@@ -19,15 +19,17 @@ body {
     background-color: skyblue;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.25);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
 }
+
 #display-section {
-background-color: #ffffff;
+    background-color: #ffffff;
     padding: 10px;
     text-align: right;
     border-radius: 5px;
     margin-bottom: 15px;
 }
+
 #history {
     font-size: 14px;
     color: #666;
@@ -35,6 +37,7 @@ background-color: #ffffff;
     margin-bottom: 5px;
     word-wrap: break-word;
 }
+
 #display {
     background-color: #fff;
     color: #333;
@@ -100,4 +103,3 @@ button:active {
     gap: 10px;
     margin-bottom: 20px;
 }
-

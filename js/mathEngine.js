@@ -37,9 +37,9 @@ export const operate = (operator, a, b) => {
     case 'divide':
       result = divide(numA, numB);
       break;
-     case '+/-':
+    case '+/-':
       result = multiply(numA, -1);
-      break; 
+      break;
     default:
       return {
         error: true,
