@@ -1,17 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Number Guessing Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎯 Number Guessing Game</h1>
-        <p>Follow the prompts on your screen to play.</p>
-        <p><strong>Press F12 to open the Console and see your logs!</strong></p>
+
+    <div id="calculator">
+        <div class="screen-container">
+            <div id="display-history"></div> <div id="display">0</div>        </div>
+
+        <div class="buttons-grid">
+            <button id="btn-clear" class="action-btn span-two">Clear</button>
+            <button id="btn-plus-minus" class="action-btn">+/-</button>
+            <button id="btn-backspace" class="action-btn">Del</button>
+            
+            <button class="number-btn" data-number="7">7</button>
+            <button class="number-btn" data-number="8">8</button>
+            <button class="number-btn" data-number="9">9</button>
+            <button class="operator-btn" data-operator="divide">/</button>
+            
+            <button class="number-btn" data-number="4">4</button>
+            <button class="number-btn" data-number="5">5</button>
+            <button class="number-btn" data-number="6">6</button>
+            <button class="operator-btn" data-operator="multiply">*</button>
+            
+            <button class="number-btn" data-number="1">1</button>
+            <button class="number-btn" data-number="2">2</button>
+            <button class="number-btn" data-number="3">3</button>
+            <button class="operator-btn" data-operator="subtract">-</button>
+            
+            <button class="number-btn" data-number="0">0</button>
+            <button id="btn-decimal">.</button>
+            <button id="btn-equals" class="action-btn">=</button>
+            <button class="operator-btn" data-operator="add">+</button>
+        </div>
     </div>
-    <script src="./js/logic.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
