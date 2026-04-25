@@ -15,7 +15,7 @@ body {
 }
 
 #calculator {
-    width: 320px;
+    width: 370px;
     background-color: skyblue;
     border-radius: 10px;
     padding: 20px;
@@ -42,16 +42,15 @@ body {
     background-color: #fff;
     color: #333;
     font-size: 36px;
-    font-weight: bold;
+    font-weight: normal;
     text-align: right;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    height: 40px;
-    min-height: 40px;
+    min-height: 45px;
+    white-space: nowrap;
+    overflow-x: auto;
     overflow-y: hidden;
-    overflow-x: hidden;
-    word-wrap: break-word;
 }
 
 .buttons-grid {
@@ -77,7 +76,6 @@ button:hover {
 button:active {
     background-color: #aaa;
 }
-
 
 .operator-btn {
     background-color: #007acc;
