@@ -3,7 +3,7 @@
 A browser-based calculator application developed as part of a **team collaboration project**.
 
 ## Live Demo
-[Live Demo]([https://mayerfeld-consulting-final-assignment-one.vercel.app/](https://mayerfeld-consulting-final-assignme.vercel.app/)) 
+[Live Demo]((https://mayerfeld-consulting-final-assignme.vercel.app/)) 
 
 ## Project Overview
 This project is a calculator web application focused on implementing core arithmetic operations and handling user input in real time. The goal was to build a functional and responsive calculator using fundamental frontend technologies.
